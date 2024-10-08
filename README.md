@@ -1,39 +1,37 @@
-# Proiect Senzor de Parcare cu ESP32
+# Parking Sensor Project with ESP32
 
-## Componente utilizate
+## Components Used
 
-- **ESP32**: Microcontroller care gestionează senzorul ultrasonic, LED-urile și buzzer-ul.
-- **Senzor ultrasonic HC-SR04**: Măsoară distanța față de un obstacol.
-- **Buzzer**: Emite sunete de avertizare pe măsură ce distanța față de obstacol scade.
-- **6 LED-uri**: Două LED-uri verzi, două galbene și două roșii care indică distanța de parcare.
-  - **Verzi**: Obiectul este la o distanță mai mare, sigură.
-  - **Galbene**: Atenție, obiectul este la o distanță mai apropiată.
-  - **Roșii**: Pericol, obiectul este foarte aproape.
-- **Interfață grafică în Processing**: Afișează grafic un senzor de parcare stilizat, utilizând 6 semicercuri pentru a reprezenta diferite intervale de distanță.
+- **ESP32:** A microcontroller that manages the ultrasonic sensor, LEDs, and buzzer.
+- **HC-SR04 Ultrasonic Sensor:** Measures the distance to an obstacle.
+- **Buzzer:** Emits warning sounds as the distance to the obstacle decreases.
+- **6 LEDs:** Two green, two yellow, and two red LEDs that indicate parking distance.
+  - **Green LEDs:** The object is at a safe distance.
+  - **Yellow LEDs:** Warning, the object is closer.
+  - **Red LEDs:** Danger, the object is very close.
+- **Graphical Interface in Processing:** Displays a stylized parking sensor using 6 semicircles to represent different distance intervals.
 
-## Funcționalitate
+## Functionality
 
-- **Măsurarea distanței**: Senzorul ultrasonic măsoară distanța dintre senzor și obstacol.
-  - **Intervale de distanță**:
-    - **60 cm**: Primul LED verde se aprinde.
-    - **50 cm**: Ambele LED-uri verzii sunt aprinse.
-    - **40 cm**: Primul LED se aprinde.
-    - **30 cm**: Ambele LED-uri galbene sunt aprinse.
-    - **< 10 cm**: Toate LED-urile roșii sunt aprinse.
+- **Distance Measurement:** The ultrasonic sensor measures the distance between the sensor and the obstacle.
+  - **Distance intervals:**
+    - **60 cm:** The first green LED turns on.
+    - **50 cm:** Both green LEDs turn on.
+    - **40 cm:** The first yellow LED turns on.
+    - **30 cm:** Both yellow LEDs turn on.
+    - **< 10 cm:** All red LEDs turn on.
 
-- **Indicație sonoră**: Buzzer-ul emite semnale sonore cu frecvență în creștere pe măsură ce distanța față de obiect scade, ajutând la avertizarea utilizatorului.
+- **Sound Indication:** The buzzer emits beeps with increasing frequency as the distance to the object decreases, helping to alert the user.
 
-- **Interfață grafică în Processing**: 
-  - Am creat o interfață grafică stilizată a unui senzor de parcare, folosind 6 semicercuri, fiecare corespunzând unui interval de distanță. Semicercurile își schimbă culoarea în funcție de distanța măsurată de senzorul ultrasonic:
-    - **Verzi** pentru distanțe sigure (> 60 cm),
-    - **Galbene** pentru distanțe moderate (20-40 cm),
-    - **Roșii** pentru distanțe periculoase (< 20 cm).
+- **Graphical Interface in Processing:**
+  - A stylized graphical interface of a parking sensor has been created, using 6 semicircles, each corresponding to a distance interval. The semicircles change color depending on the distance measured by the ultrasonic sensor:
+    - **Green** for safe distances (> 60 cm),
+    - **Yellow** for moderate distances (20-40 cm),
+    - **Red** for dangerous distances (< 20 cm).
 
-- **Comunicare ESP32 cu Processing**: Interfața grafică și ESP32 comunică prin port serial. ESP32 trimite date despre distanță către Processing, care actualizează vizualizarea grafică în timp real.
+- **ESP32 to Processing Communication:** The graphical interface and ESP32 communicate via serial port. The ESP32 sends distance data to Processing, which updates the graphical visualization in real time.
 
+## Source Code
 
-## Codul sursă
-
-- **Firmware ESP32**: Codul ESP32 se ocupă de măsurarea distanței cu senzorul ultrasonic, aprinderea LED-urilor și activarea buzzer-ului în funcție de distanța detectată. Datele despre distanță sunt trimise la PC prin serial pentru a fi procesate de aplicația Processing.
-- **Aplicație Processing**: Codul din Processing interpretează datele primite de la ESP32 și actualizează interfața grafică, oferind un feedback vizual în timp real despre distanța până la obstacol.
-
+- **ESP32 Firmware:** The ESP32 code handles distance measurement using the ultrasonic sensor, controlling the LEDs and activating the buzzer based on the detected distance. Distance data is sent to the PC via serial for processing by the Processing application.
+- **Processing Application:** The Processing code interprets the data received from the ESP32 and updates the graphical interface, providing real-time visual feedback on the distance to the obstacle.
